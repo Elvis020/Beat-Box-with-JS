@@ -2,7 +2,7 @@ class Beat{
 
     constructor(audioSrc){
         this.audio = new Audio(audioSrc);
-        console.log(this.audio);
+        // console.log(this.audio);
         // this.audio.play();
     }
 
@@ -17,6 +17,9 @@ class Button{
     constructor(color, keyCode){
         this.color = color;
         this.keyCode = keyCode;
+        this.element = document.getElementById(keyCode);
+        console.log(this.element);
+        this.setButtonColorInHTML();
 
     }
 
@@ -24,8 +27,8 @@ class Button{
 
 
 
-    setButtonColorHTML = () => {
-
+    setButtonColorInHTML = () => {
+    		this.element.style.borderColor = this.color;
     }
 
     select = () => {
