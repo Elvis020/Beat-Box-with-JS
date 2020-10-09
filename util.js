@@ -2,8 +2,6 @@ class Beat{
 
     constructor(audioSrc){
         this.audio = new Audio(audioSrc);
-        // console.log(this.audio);
-        // this.audio.play();
     }
 
     play = () =>{
@@ -18,8 +16,8 @@ class Button{
         this.color = color;
         this.keyCode = keyCode;
         this.element = document.getElementById(keyCode);
-        console.log(this.element);
-        this.setButtonColorInHTML();
+				this.setButtonColorInHTML();
+				this.setTransitionEndListener();
 
     }
 
@@ -32,10 +30,19 @@ class Button{
     }
 
     select = () => {
+			this.element.style.backgroundColor = this.color;
+			this.element.style.boxShadow = `0px 0px 17px 0px ${this.color}`;
 
     }
 
     deSelect = () => {
-
-    }
+			this.element.style.backgroundColor = "transparent";
+			this.element.style.boxShadow = "none";
+			}
+		
+		setTransitionEndListener = () => {
+				this.element.addEventListener("transitionend", () => {
+					this.deSelect();
+				})
+		}
 }
